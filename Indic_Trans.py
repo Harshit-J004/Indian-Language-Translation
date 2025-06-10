@@ -4,7 +4,7 @@ import torch
 import streamlit as st
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from IndicTransToolkit.processor import IndicProcessor
-
+from streamlit.components.v1 import html
 
 # Environment optimizations
 os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
@@ -199,8 +199,40 @@ def main():
                 if translation.startswith("Error:"):
                     st.markdown(f'<div class="error-box">{translation}</div>', unsafe_allow_html=True)
                 else:
-                    st.markdown(f'<div class="translation-box">{translation}</div>', unsafe_allow_html=True)
+                    # Escape translation text for safe HTML rendering
+                    safe_translation = translation.replace('"', '&quot;').replace("'", "&#39;")
+
+                    # Display the result with a copy button
+                    html(f"""
+                        <div id="translation-container" style="
+                            background: #f5f9ff;
+                            padding: 15px;
+                            border-radius: 10px;
+                            color: #000000;
+                            font-size: 1.1rem;
+                            margin-bottom: 10px;
+                        ">{safe_translation}</div>
+                        <button onclick="copyTranslation()" style="
+                            background-color:#4CAF50;
+                            color:white;
+                            padding:8px 12px;
+                            border:none;
+                            border-radius:5px;
+                            cursor:pointer;
+                        ">📋 Copy Translation</button>
+
+                        <script>
+                        function copyTranslation() {{
+                            const text = document.getElementById("translation-container").innerText;
+                            navigator.clipboard.writeText(text).then(() => {{
+                                alert("✅ Translation copied to clipboard!");
+                            }});
+                        }}
+                        </script>
+                    """, height=200)
+
                     st.caption(f"Translated in {duration:.2f} seconds")
+
             else:
                 st.warning("Please enter text to translate")
 
