@@ -8,6 +8,8 @@ A Streamlit-based language translation app for bi-directional translation betwee
 
 *Coming soon – host using Streamlit Sharing or Hugging Face Spaces.*
 
+![image](https://github.com/user-attachments/assets/0f7112ba-50bf-40e1-915c-cb1165c899e5)
+
 ---
 
 ## 🚀 Features
