@@ -23,9 +23,6 @@ A Streamlit-based language translation app for bi-directional translation betwee
 
 ## 🧪 Supported Languages
 
-![image](https://github.com/user-attachments/assets/80ba7a92-22c0-4a43-99c3-3d6a4d03253c)
-
-
 | English  | Hindi     | Bengali  | Tamil    | Telugu | Gujarati |
 | -------- | --------- | -------- | -------- | ------ | -------- |
 | Kannada  | Malayalam | Marathi  | Punjabi  | Urdu   | Odia     |
