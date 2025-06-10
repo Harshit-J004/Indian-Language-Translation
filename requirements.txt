@@ -1,0 +1,11 @@
+streamlit
+torch
+transformers
+IndicTransToolkit
+sentencepiece
+protobuf<4.0.0
+scipy
+numpy
+typing-extensions
+accelerate
+huggingface-hub
